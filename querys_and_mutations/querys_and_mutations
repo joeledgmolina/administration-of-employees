@@ -1,0 +1,174 @@
+query{
+  employees{
+    id
+    birth_date
+    first_name
+    last_name
+    title {
+      title
+      from_date
+      to_date
+    }
+    salary {
+      salary
+      from_date
+      to_date
+    }
+    dept_employee{
+      department{
+        dept_name
+      }
+      from_date
+      to_date
+    }
+    dept_manager{
+      department{
+        dept_name
+      }
+      from_date
+      to_date
+    }
+  }
+}
+
+mutation{
+  addemployee(input:{
+    dni:20202020
+    birth_date:"1990-10-10"
+    first_name: "Joel"
+    last_name: "Molina"
+    gender: M
+    hire_date: "2019-10-30"
+  }){
+    id
+    first_name
+    last_name
+    hire_date
+  }
+}
+
+mutation{
+  addsalary(input:{
+    employee:{
+      id: "5ee533bb768c4c2eb42a3f6f"
+    }
+    salary: 2333 
+    from_date:"2019-10-30"
+    to_date:"2020-01-30"
+  }){
+    employee {
+      id
+      first_name
+      birth_date
+    }
+  }
+}
+
+mutation{
+  addtitle(input:{
+    employee:{
+      id:"5ee6e34bbd16361a7c3578d4"
+    }
+    title:"Software Developer"
+    from_date:"2018-10-20"
+    to_date: "2019-10-10"
+  }){
+    employee{
+      birth_date
+      first_name
+    }
+  }
+}
+
+mutation{
+  adddepartment(input:{
+    dept_name: "Software"
+  }){
+    id
+    dept_name
+  }
+}
+
+mutation{
+  adddept_employee(input:{
+    employee:{
+      id: "5ee12dc83d7f792a8cba2caa"
+    }
+    department:{
+      id:"5ee13b0c637c2a0afccf4da4"
+    }
+    from_date:"2018-06-26"
+    to_date:"2018-08-26"
+  }){
+    employee{
+      first_name
+    }
+    department{
+      dept_name
+    }
+  }
+}
+
+mutation{
+  adddept_manager(input:{
+    employee:{
+      id:"5ee6e334bd16361a7c3578d3"
+    }
+    department:{
+      id:"5ee6e45dbd16361a7c3578d9"
+    }
+    from_date:"2018-03-14"
+    to_date:"2018-08-14"
+  }){
+    employee{
+      first_name
+    }
+    department{
+      dept_name
+    }
+  }
+}
+
+mutation{
+  updateemployee(input:{
+    id:"5ee2db585fa325019802236d"
+    dni:20202020
+  }){
+    id
+  }
+}
+
+mutation{
+  deleteemployee(id: "5ee7fee05005aa10a8d94634"){
+    id
+    dni
+  }
+}
+
+mutation{
+  deletetitle(id:"5eea7931d25899338cb65be5"){
+    employee {
+      id
+    }
+  }
+}
+
+mutation{
+  deletedept_employee(id:"5eea796ed25899338cb65be6"){
+    employee {
+      id
+    }
+  }
+}
+
+mutation{
+  deletedept_manager(id:"5eea79e0d25899338cb65be7"){
+    id
+  }
+}
+
+mutation{
+  deletedepartment(id: "5eea78a4d25899338cb65be3"){
+    id
+  }
+}
