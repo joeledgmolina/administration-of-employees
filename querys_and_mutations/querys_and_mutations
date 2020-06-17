@@ -1,36 +1,3 @@
-query{
-  employees{
-    id
-    birth_date
-    first_name
-    last_name
-    title {
-      title
-      from_date
-      to_date
-    }
-    salary {
-      salary
-      from_date
-      to_date
-    }
-    dept_employee{
-      department{
-        dept_name
-      }
-      from_date
-      to_date
-    }
-    dept_manager{
-      department{
-        dept_name
-      }
-      from_date
-      to_date
-    }
-  }
-}
-
 mutation{
   addemployee(input:{
     dni:20202020
@@ -129,6 +96,50 @@ mutation{
   }
 }
 
+query{
+  employees{
+    id
+    birth_date
+    first_name
+    last_name
+    title {
+      title
+      from_date
+      to_date
+    }
+    salary {
+      salary
+      from_date
+      to_date
+    }
+    dept_employee{
+      department{
+        dept_name
+      }
+      from_date
+      to_date
+    }
+    dept_manager{
+      department{
+        dept_name
+      }
+      from_date
+      to_date
+    }
+  }
+}
+
+query{
+  departments{
+    dept_name
+    dept_managers{
+      employee {
+        id
+      }
+    }
+  }
+}
+
 mutation{
   updateemployee(input:{
     id:"5ee2db585fa325019802236d"
@@ -138,10 +149,14 @@ mutation{
   }
 }
 
-mutation{
-  deleteemployee(id: "5ee7fee05005aa10a8d94634"){
-    id
-    dni
+query{
+  departments{
+    dept_name
+    dept_managers{
+      employee {
+        id
+      }
+    }
   }
 }
 
@@ -170,5 +185,13 @@ mutation{
 mutation{
   deletedepartment(id: "5eea78a4d25899338cb65be3"){
     id
+  }
+}
+
+mutation{
+  deletesalary(id:"5eeaa203afa90902b4598994"){
+    employee {
+      id
+    }
   }
 }

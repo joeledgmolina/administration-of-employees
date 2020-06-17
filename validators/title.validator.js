@@ -4,7 +4,10 @@ const {Employee} = require('../models/employee');
 const {Title} = require('../models/title');
 const {Dept_Employee} = require('../models/dept_employee');
 
-/**The same employee cannot have 2 titles with the same dept_name */
+/**The same employee cannot have 2 titles with the same dept_name 
+ * Example: if an employee is Backend Developer from 2018-03-31 to 2019-03-31 
+ * then he cannot be Tester from 2019-01-01 to 2020-01-01
+*/
 const OneEmployeeCantHaveTwoTitlesInTheSameDepartmentName ={
     validate: async function(typeName, originalObject, materializedObject) {
         const EmployeeFinded =

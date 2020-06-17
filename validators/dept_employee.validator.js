@@ -27,7 +27,10 @@ class FromDateCantBeGreaterThanToDateError extends GNXError {
     }
 };
 
-/**Restriction: Can't be 2 employees assigned to the same department in the same portion of time */
+/**Restriction: Can't be 2 employees assigned to the same department in the same portion of time 
+ * Example: if an employee is assigned to the software department from 2018-03-31 to 2019-03-31 
+ * then another employee cannot be is assigned to the software department  from 2019-01-01 to 2020-01-01
+*/
 const CantTwoEmployeesAssignedToTheSameDepartmentAtTheSameTime = {
     validate: async function(typeName, originalObject, materializedObject){
         const EmployeeAssigned = 
